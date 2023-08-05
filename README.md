@@ -58,7 +58,6 @@ To get started with the Child Malnutrition Expert System, ensure you have the fo
    The expert system will start, and you can follow the prompts to input the child's symptoms and medical data. The system will then analyze the information and provide a diagnosis for the child's nutritional status.
 
 ## Contributing
-Contributions to this project are welcome! If you find any issues or want to enhance the system,
-
+Contributions to this project are welcome!
 ## License
 This project is licensed under the [MIT License](https://github.com/your-username/child-malnutrition-expert-system/blob/main/LICENSE). Feel free to use, modify, and distribute the code for personal and commercial purposes. However, remember to provide proper attribution to the original author.
