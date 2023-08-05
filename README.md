@@ -1,6 +1,5 @@
 # Child Malnutrition Expert System in Python
 
-(https://github.com/your-username/child-malnutrition-expert-system/blob/main/LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8-blue)](https://www.python.org/downloads/)
 [![Experta Version](https://img.shields.io/badge/experta-1.9.4-brightgreen)](https://pypi.org/project/experta/)
 [![IDE](https://img.shields.io/badge/IDE-Pycharm%20%7C%20VSCode-orange)](https://www.jetbrains.com/pycharm/)
