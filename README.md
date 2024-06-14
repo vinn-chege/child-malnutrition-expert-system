@@ -34,7 +34,7 @@ To get started with the Child Malnutrition Expert System, ensure you have the fo
 1. Clone this repository to your local machine using:
 
    ```
-   git clone https://github.com/vincent-chege/child-malnutrition-expert-system.git
+   git clone https://github.com/vinn-chege/child-malnutrition-expert-system.git
    ```
 
 2. Navigate to the project directory:
