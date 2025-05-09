@@ -1,0 +1,164 @@
+{
+    "diseases": {
+        "Anaemia": {
+            "symptoms": [
+                {
+                    "name": "tiredness",
+                    "question": "Does the child show characteristics of tiredness?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "enlarged_tummy",
+                    "question": "Does the child have an enlarged tummy?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "brittle_hair",
+                    "question": "Does the child inhibit brittle hair?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "diarrhoea",
+                    "question": "Does the child have symptoms of diarrhoea?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "dry_skin",
+                    "question": "Does the child have dry skin?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "cold_hands_feet",
+                    "question": "Does the child have cold hands and feet?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "swollen_tongue",
+                    "question": "Does the child have a swollen tongue?",
+                    "weight": 0.7
+                }
+            ],
+            "description": "A condition where the body lacks enough healthy red blood cells to carry adequate oxygen to the body's tissues. Common in malnourished children, it can affect growth and development.",
+            "treatments": [
+                "Iron supplementation",
+                "Vitamin B12 supplements",
+                "Folic acid supplementation",
+                "Iron-rich diet including red meat, leafy greens, and fortified cereals",
+                "Regular monitoring of blood levels",
+                "Treatment of any underlying infections"
+            ],
+            "severity": "moderate",
+            "required_symptoms": ["tiredness", "cold_hands_feet"],
+            "confidence_threshold": 0.7
+        },
+        "Kwashiakor": {
+            "symptoms": [
+                {
+                    "name": "tiredness",
+                    "question": "Does the child show characteristics of tiredness?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "enlarged_tummy",
+                    "question": "Does the child have an enlarged tummy?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "brittle_hair",
+                    "question": "Does the child inhibit brittle hair?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "diarrhoea",
+                    "question": "Does the child have symptoms of diarrhoea?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "dry_skin",
+                    "question": "Does the child have dry skin?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "cold_hands_feet",
+                    "question": "Does the child have cold hands and feet?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "swollen_tongue",
+                    "question": "Does the child have a swollen tongue?",
+                    "weight": 0.7
+                }
+            ],
+            "description": "A severe form of protein malnutrition characterized by edema, enlarged liver, and skin changes. It typically affects children during periods of famine or low protein intake.",
+            "treatments": [
+                "Gradual reintroduction of protein-rich foods",
+                "Treatment of infections and complications",
+                "Vitamin and mineral supplementation",
+                "Therapeutic feeding program",
+                "Regular medical monitoring",
+                "Nutritional counseling for caregivers"
+            ],
+            "severity": "severe",
+            "required_symptoms": ["enlarged_tummy", "brittle_hair"],
+            "confidence_threshold": 0.8
+        },
+        "Marasmus": {
+            "symptoms": [
+                {
+                    "name": "tiredness",
+                    "question": "Does the child show characteristics of tiredness?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "enlarged_tummy",
+                    "question": "Does the child have an enlarged tummy?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "brittle_hair",
+                    "question": "Does the child inhibit brittle hair?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "diarrhoea",
+                    "question": "Does the child have symptoms of diarrhoea?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "dry_skin",
+                    "question": "Does the child have dry skin?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "cold_hands_feet",
+                    "question": "Does the child have cold hands and feet?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "swollen_tongue",
+                    "question": "Does the child have a swollen tongue?",
+                    "weight": 0.7
+                }
+            ],
+            "description": "A severe form of malnutrition characterized by chronic wasting of body tissues, resulting in severe weight loss and muscle wasting. Common in areas with food shortages or severe poverty.",
+            "treatments": [
+                "Carefully planned refeeding program",
+                "Treatment of underlying infections",
+                "Therapeutic milk formula",
+                "Gradual introduction of solid foods",
+                "Regular weight monitoring",
+                "Nutritional education for caregivers"
+            ],
+            "severity": "severe",
+            "required_symptoms": ["dry_skin", "tiredness"],
+            "confidence_threshold": 0.8
+        }
+    },
+    "system_settings": {
+        "min_confidence_threshold": 0.6,
+        "required_symptoms_weight": 1.5,
+        "max_questions_per_session": 10,
+        "save_diagnosis_history": true,
+        "enable_detailed_reporting": true
+    }
+} 
