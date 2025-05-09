@@ -1,6 +1,6 @@
 # 🏥 Child Malnutrition Expert System
 
-[![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
+[![Python Version](https://img.shields.io/badge/python-3.8.10-blue)](https://www.python.org/downloads/release/python-3810/)
 [![Experta Version](https://img.shields.io/badge/experta-1.9.4-brightgreen)](https://pypi.org/project/experta/)
 [![IDE](https://img.shields.io/badge/IDE-Pycharm%20%7C%20VSCode-orange)](https://www.jetbrains.com/pycharm/)
 
@@ -18,12 +18,17 @@ An intelligent expert system designed to help healthcare professionals and careg
 
 ## 🚀 Installation
 
-1. Ensure you have Python 3.8 or later installed
+1. Install Python 3.8.10 from [python.org](https://www.python.org/downloads/release/python-3810/)
+   - For Windows: Download and run the [Windows installer (64-bit)](https://www.python.org/ftp/python/3.8.10/python-3.8.10-amd64.exe)
+   - For macOS: Download and run the [macOS 64-bit Intel installer](https://www.python.org/ftp/python/3.8.10/python-3.8.10-macosx10.9.pkg)
+   - For Linux: Use your distribution's package manager or build from source
+
 2. Clone this repository:
    ```bash
    git clone https://github.com/vinn-chege/child-malnutrition-expert-system.git
    cd child-malnutrition-expert-system
    ```
+
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
