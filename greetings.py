@@ -13,7 +13,7 @@ class Greetings(KnowledgeEngine):
     @DefFacts()
     def _initial_action(self):
         print("")
-        print("This is a rule based expert system to diagnose child malnutrition diseases diseases")
+        print("This is a rule based expert system to diagnose child malnutrition diseases")
         print("")
         print("Does the child have any of the following symptoms?")
         print("Reply with a yes or a no")
@@ -59,9 +59,9 @@ class Greetings(KnowledgeEngine):
         Fact(diarrhoea="yes"),
         Fact(dry_skin="yes"),
         Fact(cold_hands_feet="yes"),
-        Fact(swollen_tongue="no"),
+        Fact(swollen_tongue="no")
     )
-    def disease_0(self):
+    def disease_anaemia(self):
         self.declare(Fact(disease="Anaemia"))
 
     @Rule(
@@ -72,9 +72,9 @@ class Greetings(KnowledgeEngine):
         Fact(diarrhoea="yes"),
         Fact(dry_skin="yes"),
         Fact(cold_hands_feet="no"),
-        Fact(swollen_tongue="no"),
+        Fact(swollen_tongue="no")
     )
-    def disease_0(self):
+    def disease_kwashiakor(self):
         self.declare(Fact(disease="Kwashiakor"))
 
     @Rule(
@@ -85,9 +85,9 @@ class Greetings(KnowledgeEngine):
         Fact(diarrhoea="yes"),
         Fact(dry_skin="yes"),
         Fact(cold_hands_feet="yes"),
-        Fact(swollen_tongue="no"),
+        Fact(swollen_tongue="no")
     )
-    def disease_0(self):
+    def disease_marasmus(self):
         self.declare(Fact(disease="Marasmus"))
 
 
@@ -127,11 +127,9 @@ class Greetings(KnowledgeEngine):
         diarrhoea,
         dry_skin,
         cold_hands_feet,
-        swollen_tongue,
-
-
+        swollen_tongue
     ):
-        print("\nThe expert system did not  find a disease that matches the child's exact symptoms.")
+        print("\nThe expert system did not find a disease that matches the child's exact symptoms.")
         lis = [
             tiredness,
             enlarged_tummy,
@@ -139,7 +137,7 @@ class Greetings(KnowledgeEngine):
             diarrhoea,
             dry_skin,
             cold_hands_feet,
-            swollen_tongue,
+            swollen_tongue
         ]
         max_count = 0
         max_disease = ""
