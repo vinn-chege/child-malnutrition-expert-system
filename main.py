@@ -21,7 +21,7 @@ def preprocess():
         symptom_map[str(s_list)] = disease
         disease_s_file.close()
 
-        disease_s_file = open("Disease descriptions/" + disease + ".txt")
+        disease_s_file = open("Diseases descriptions/" + disease + ".txt")
         disease_s_data = disease_s_file.read()
         d_desc_map[disease] = disease_s_data
         disease_s_file.close()
@@ -41,26 +41,26 @@ def identify_disease(*arguments):
 
 
 def get_details(disease):
-    return d_desc_map[disease]
+    details = {
+        "Anaemia": "A condition where the body lacks enough healthy red blood cells to carry adequate oxygen to the body's tissues.",
+        "Kwashiakor": "A form of severe protein malnutrition characterized by edema and an enlarged liver with fatty infiltrates.",
+        "Marasmus": "A form of severe malnutrition characterized by energy deficiency and wasting of body tissues."
+    }
+    return details.get(disease, "No details available")
 
 
 def get_treatments(disease):
-    return d_treatment_map[disease]
+    treatments = {
+        "Anaemia": "Iron supplements, Vitamin B12 supplements, Dietary changes to include iron-rich foods",
+        "Kwashiakor": "Gradual protein and calorie increase, Vitamin and mineral supplements, Treatment of infections",
+        "Marasmus": "Gradual refeeding, Nutritional rehabilitation, Treatment of underlying infections"
+    }
+    return treatments.get(disease, "No treatment information available")
 
 
 def if_not_matched(disease):
-    print("")
-    id_disease = disease
-    disease_details = get_details(id_disease)
-    treatments = get_treatments(id_disease)
-    print("")
-    print("The most probable malnutrition disease that your child has  is %s\n" % id_disease)
-    print("A short description of the disease is given below :\n")
-    print(disease_details + "\n")
-    print(
-        "The common medications and procedures suggested by doctors are: \n"
-    )
-    print(treatments + "\n")
+    print(f"\nThe closest matching disease is: {disease}")
+    print("Please consult a healthcare professional for proper diagnosis.")
 
 #driver function
 if __name__ == "__main__":
