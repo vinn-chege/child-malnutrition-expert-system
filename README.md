@@ -1,3 +1,63 @@
+# Child Malnutrition Expert System
+
+A rule-based expert system for diagnosing child malnutrition conditions. The system uses a knowledge base of symptoms, diseases, and treatments to provide accurate diagnoses and treatment recommendations.
+
+## Features
+
+- Modern GUI interface for easy interaction
+- Confidence-based diagnosis system
+- Detailed symptom analysis
+- Comprehensive treatment recommendations
+- Report generation and saving
+- Progress tracking during diagnosis
+- Support for multiple conditions
+
+## Installation
+
+1. Ensure you have Python 3.8 or later installed
+2. Clone this repository
+3. Install the required dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+## Usage
+
+1. Run the GUI application:
+   ```bash
+   python gui.py
+   ```
+
+2. Click "Start New Diagnosis" to begin
+3. Answer each question about the child's symptoms
+4. Review the diagnosis and treatment recommendations
+5. Save the report if needed
+
+## Knowledge Base
+
+The system uses a JSON-based knowledge base (`knowledge_base.json`) that contains:
+- Disease definitions
+- Symptom lists with weights
+- Treatment recommendations
+- Severity levels
+- Required symptoms for each condition
+
+## Contributing
+
+Feel free to contribute to this project by:
+1. Adding new diseases to the knowledge base
+2. Improving the symptom matching algorithm
+3. Enhancing the GUI
+4. Adding new features
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Disclaimer
+
+This system is for educational purposes only and should not be used as a substitute for professional medical advice. Always consult with healthcare professionals for proper diagnosis and treatment.
+
 # Child Malnutrition Expert System in Python
 
 [![Python Version](https://img.shields.io/badge/python-3.7%20%7C%203.8-blue)](https://www.python.org/downloads/)
