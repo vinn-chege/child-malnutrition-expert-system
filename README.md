@@ -203,5 +203,5 @@ For questions or support, please:
 ---
 
 **Version**: 2.0  
-**Last Updated**: 2024  
+**Last Updated**: 2025  
 **Compatibility**: Python 3.7+
