@@ -50,12 +50,17 @@ class MalnutritionExpertSystem:
         """Calculate confidence score for a disease given the responses."""
         total_weight = sum(s.weight for s in disease.symptoms)
         matched_weight = 0
+        required_symptoms_matched = 0
         
         # Check required symptoms first
         for req_symptom in disease.required_symptoms:
             symptom_response = responses.get(req_symptom, False)
-            if not symptom_response:
-                return 0.0  # Missing required symptom
+            if symptom_response:
+                required_symptoms_matched += 1
+        
+        # If not all required symptoms are present, return very low confidence
+        if required_symptoms_matched < len(disease.required_symptoms):
+            return 0.0
         
         # Calculate weighted score
         for symptom in disease.symptoms:
@@ -66,8 +71,21 @@ class MalnutritionExpertSystem:
                     weight *= self.settings['required_symptoms_weight']
                 matched_weight += weight
         
-        confidence = matched_weight / total_weight
-        return min(confidence, 1.0)  # Cap at 1.0
+        # Calculate base confidence
+        base_confidence = matched_weight / total_weight
+        
+        # Apply penalty for missing high-weight symptoms
+        missing_penalty = 0
+        for symptom in disease.symptoms:
+            if not responses.get(symptom.name, False) and symptom.weight >= 0.8:
+                missing_penalty += symptom.weight * 0.1
+        
+        # Apply bonus for having multiple symptoms
+        symptom_count = sum(1 for response in responses.values() if response)
+        symptom_bonus = min(symptom_count * 0.02, 0.1)  # Max 10% bonus
+        
+        confidence = base_confidence - missing_penalty + symptom_bonus
+        return max(0.0, min(confidence, 1.0))  # Ensure between 0 and 1
     
     def diagnose(self, responses: Dict[str, bool]) -> List[Dict]:
         """
@@ -102,29 +120,97 @@ class MalnutritionExpertSystem:
     def generate_report(self, responses: Dict[str, bool], diagnoses: List[Dict]) -> str:
         """Generate a detailed diagnostic report."""
         report = []
-        report.append("Child Malnutrition Expert System - Diagnostic Report")
+        report.append("=" * 60)
+        report.append("CHILD MALNUTRITION EXPERT SYSTEM - DIAGNOSTIC REPORT")
+        report.append("=" * 60)
         report.append(f"Date: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         
-        report.append("Symptoms Reported:")
-        for symptom_name, is_present in responses.items():
-            report.append(f"- {symptom_name}: {'Yes' if is_present else 'No'}")
+        # Risk Assessment
+        risk_level = self.assess_risk_level(responses)
+        risk_colors = {
+            "high": "🔴 HIGH RISK",
+            "moderate": "🟡 MODERATE RISK", 
+            "low": "🟢 LOW RISK",
+            "minimal": "⚪ MINIMAL RISK"
+        }
+        report.append(f"RISK ASSESSMENT: {risk_colors.get(risk_level, 'UNKNOWN')}")
         report.append("")
         
+        # Symptoms Summary
+        report.append("SYMPTOMS REPORTED:")
+        report.append("-" * 30)
+        positive_symptoms = [name for name, present in responses.items() if present]
+        negative_symptoms = [name for name, present in responses.items() if not present]
+        
+        if positive_symptoms:
+            report.append("Present Symptoms:")
+            for symptom in positive_symptoms:
+                report.append(f"✓ {symptom.replace('_', ' ').title()}")
+        
+        if negative_symptoms:
+            report.append("\nAbsent Symptoms:")
+            for symptom in negative_symptoms:
+                report.append(f"✗ {symptom.replace('_', ' ').title()}")
+        
+        report.append(f"\nTotal Symptoms Checked: {len(responses)}")
+        report.append(f"Positive Responses: {len(positive_symptoms)}")
+        report.append("")
+        
+        # Diagnoses
         if diagnoses:
-            report.append("Potential Diagnoses:")
-            for diagnosis in diagnoses:
+            report.append("POTENTIAL DIAGNOSES:")
+            report.append("-" * 30)
+            for i, diagnosis in enumerate(diagnoses, 1):
                 disease = diagnosis['disease']
                 confidence = diagnosis['confidence']
-                report.append(f"\n{disease.name} (Confidence: {confidence:.1%}, Severity: {disease.severity})")
-                report.append(f"Description: {disease.description}")
-                report.append("\nRecommended Treatments:")
-                for treatment in disease.treatments:
-                    report.append(f"- {treatment}")
+                severity_icons = {"severe": "🔴", "moderate": "🟡", "mild": "🟢"}
+                severity_icon = severity_icons.get(disease.severity, "⚪")
+                
+                report.append(f"\n{i}. {disease.name} {severity_icon}")
+                report.append(f"   Confidence: {confidence:.1%}")
+                report.append(f"   Severity: {disease.severity.upper()}")
+                report.append(f"   Description: {disease.description}")
+                
+                if self.settings.get('enable_treatment_recommendations', True):
+                    report.append("\n   Recommended Treatments:")
+                    for treatment in disease.treatments:
+                        report.append(f"   • {treatment}")
         else:
-            report.append("No matching conditions found with sufficient confidence.")
+            report.append("NO MATCHING CONDITIONS FOUND")
+            report.append("-" * 30)
+            report.append("No conditions were identified with sufficient confidence.")
+            report.append("This could indicate:")
+            report.append("• The child may not have malnutrition-related conditions")
+            report.append("• Additional symptoms may need to be assessed")
+            report.append("• A healthcare professional should be consulted")
         
-        report.append("\nIMPORTANT: This system provides guidance only.")
-        report.append("Please consult a healthcare professional for proper diagnosis and treatment.")
+        # Immediate Recommendations
+        immediate_recs = self.get_immediate_recommendations(diagnoses, risk_level)
+        if immediate_recs:
+            report.append(f"\nIMMEDIATE RECOMMENDATIONS:")
+            report.append("-" * 30)
+            for rec in immediate_recs:
+                report.append(f"• {rec}")
+        
+        # Follow-up Actions
+        follow_up_actions = self.get_follow_up_actions(diagnoses)
+        if follow_up_actions:
+            report.append(f"\nFOLLOW-UP ACTIONS:")
+            report.append("-" * 30)
+            for action in follow_up_actions:
+                report.append(f"• {action}")
+        
+        # Disclaimer
+        report.append("\n" + "=" * 60)
+        report.append("IMPORTANT DISCLAIMER")
+        report.append("=" * 60)
+        report.append("This expert system provides preliminary guidance only.")
+        report.append("It is NOT a substitute for professional medical diagnosis.")
+        report.append("Always consult with a qualified healthcare professional")
+        report.append("for proper diagnosis, treatment, and medical advice.")
+        
+        if risk_level == "high":
+            report.append("\n🚨 URGENT: Seek immediate medical attention!")
         
         return "\n".join(report)
     
@@ -138,6 +224,72 @@ class MalnutritionExpertSystem:
             f.write(report)
         
         return filename
+    
+    def assess_risk_level(self, responses: Dict[str, bool]) -> str:
+        """Assess the overall risk level based on responses."""
+        if not self.settings.get('enable_risk_assessment', True):
+            return "unknown"
+        
+        # Count severe symptoms
+        severe_symptoms = 0
+        for disease in self.diseases.values():
+            if disease.severity == "severe":
+                for symptom in disease.symptoms:
+                    if responses.get(symptom.name, False) and symptom.weight >= 0.8:
+                        severe_symptoms += 1
+        
+        # Count total positive responses
+        total_positive = sum(1 for response in responses.values() if response)
+        
+        if severe_symptoms >= 3 or total_positive >= 8:
+            return "high"
+        elif severe_symptoms >= 1 or total_positive >= 5:
+            return "moderate"
+        elif total_positive >= 2:
+            return "low"
+        else:
+            return "minimal"
+    
+    def get_immediate_recommendations(self, diagnoses: List[Dict], risk_level: str) -> List[str]:
+        """Get immediate recommendations based on diagnoses and risk level."""
+        recommendations = []
+        
+        if risk_level == "high":
+            recommendations.append("URGENT: Seek immediate medical attention")
+            recommendations.append("Consider emergency care if child shows signs of severe distress")
+        
+        if diagnoses:
+            for diagnosis in diagnoses:
+                disease = diagnosis['disease']
+                if disease.severity == "severe":
+                    recommendations.append(f"Immediate medical evaluation recommended for {disease.name}")
+        
+        # General recommendations
+        if risk_level in ["moderate", "high"]:
+            recommendations.append("Monitor child's vital signs closely")
+            recommendations.append("Ensure adequate hydration")
+            recommendations.append("Avoid any dietary restrictions without medical supervision")
+        
+        return recommendations
+    
+    def get_follow_up_actions(self, diagnoses: List[Dict]) -> List[str]:
+        """Get follow-up actions based on diagnoses."""
+        actions = []
+        
+        for diagnosis in diagnoses:
+            disease = diagnosis['disease']
+            confidence = diagnosis['confidence']
+            
+            if confidence >= 0.8:
+                actions.append(f"Schedule follow-up appointment within 1-2 weeks for {disease.name}")
+            elif confidence >= 0.6:
+                actions.append(f"Schedule follow-up appointment within 2-4 weeks for {disease.name}")
+            
+            if disease.severity == "severe":
+                actions.append("Arrange for nutritional assessment by a dietitian")
+                actions.append("Consider referral to a pediatric nutrition specialist")
+        
+        return actions
 
 # Example usage:
 if __name__ == "__main__":
