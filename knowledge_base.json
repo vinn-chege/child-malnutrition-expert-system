@@ -1,164 +1,261 @@
 {
     "diseases": {
-        "Anaemia": {
+        "Iron Deficiency Anaemia": {
             "symptoms": [
                 {
-                    "name": "tiredness",
-                    "question": "Does the child show characteristics of tiredness?",
+                    "name": "fatigue_weakness",
+                    "question": "Does the child appear unusually tired, weak, or lethargic?",
                     "weight": 1.0
                 },
                 {
-                    "name": "enlarged_tummy",
-                    "question": "Does the child have an enlarged tummy?",
-                    "weight": 0.8
-                },
-                {
-                    "name": "brittle_hair",
-                    "question": "Does the child inhibit brittle hair?",
-                    "weight": 0.7
-                },
-                {
-                    "name": "diarrhoea",
-                    "question": "Does the child have symptoms of diarrhoea?",
-                    "weight": 0.9
-                },
-                {
-                    "name": "dry_skin",
-                    "question": "Does the child have dry skin?",
-                    "weight": 0.8
+                    "name": "pale_skin",
+                    "question": "Does the child have unusually pale skin, especially around the lips and nail beds?",
+                    "weight": 1.0
                 },
                 {
                     "name": "cold_hands_feet",
-                    "question": "Does the child have cold hands and feet?",
+                    "question": "Does the child frequently have cold hands and feet?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "brittle_nails",
+                    "question": "Are the child's nails brittle, thin, or spoon-shaped (concave)?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "poor_appetite",
+                    "question": "Has the child shown a decreased appetite or unusual food cravings (pica)?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "irritability",
+                    "question": "Is the child more irritable or fussy than usual?",
+                    "weight": 0.6
+                },
+                {
+                    "name": "frequent_infections",
+                    "question": "Does the child get frequent infections or take longer to recover from illnesses?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "slow_growth",
+                    "question": "Has the child's growth rate slowed down or is below normal for their age?",
                     "weight": 0.9
                 },
                 {
-                    "name": "swollen_tongue",
-                    "question": "Does the child have a swollen tongue?",
-                    "weight": 0.7
+                    "name": "shortness_breath",
+                    "question": "Does the child get easily short of breath during normal activities?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "dizziness",
+                    "question": "Does the child complain of dizziness or lightheadedness?",
+                    "weight": 0.6
                 }
             ],
-            "description": "A condition where the body lacks enough healthy red blood cells to carry adequate oxygen to the body's tissues. Common in malnourished children, it can affect growth and development.",
+            "description": "Iron deficiency anaemia is the most common type of anaemia in children, caused by insufficient iron in the body to produce hemoglobin. It can significantly impact a child's physical and cognitive development.",
             "treatments": [
-                "Iron supplementation",
-                "Vitamin B12 supplements",
-                "Folic acid supplementation",
-                "Iron-rich diet including red meat, leafy greens, and fortified cereals",
-                "Regular monitoring of blood levels",
-                "Treatment of any underlying infections"
+                "Iron supplementation (ferrous sulfate or ferrous fumarate)",
+                "Iron-rich diet including lean meats, fish, poultry, beans, and fortified cereals",
+                "Vitamin C supplementation to enhance iron absorption",
+                "Treatment of any underlying causes (parasites, blood loss)",
+                "Regular blood tests to monitor iron levels",
+                "Nutritional counseling for the family"
             ],
             "severity": "moderate",
-            "required_symptoms": ["tiredness", "cold_hands_feet"],
+            "required_symptoms": ["fatigue_weakness", "pale_skin"],
             "confidence_threshold": 0.7
         },
-        "Kwashiakor": {
+        "Kwashiorkor": {
             "symptoms": [
                 {
-                    "name": "tiredness",
-                    "question": "Does the child show characteristics of tiredness?",
-                    "weight": 0.9
-                },
-                {
-                    "name": "enlarged_tummy",
-                    "question": "Does the child have an enlarged tummy?",
+                    "name": "edema_swelling",
+                    "question": "Does the child have swelling (edema) in the feet, ankles, or face?",
                     "weight": 1.0
                 },
                 {
-                    "name": "brittle_hair",
-                    "question": "Does the child inhibit brittle hair?",
+                    "name": "enlarged_abdomen",
+                    "question": "Does the child have a distended or enlarged abdomen?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "hair_changes",
+                    "question": "Has the child's hair become thin, brittle, or changed color (reddish or blonde)?",
                     "weight": 0.9
                 },
                 {
-                    "name": "diarrhoea",
-                    "question": "Does the child have symptoms of diarrhoea?",
+                    "name": "skin_changes",
+                    "question": "Does the child have skin lesions, dark patches, or peeling skin?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "fatigue_weakness",
+                    "question": "Does the child appear unusually tired, weak, or lethargic?",
                     "weight": 0.8
                 },
                 {
-                    "name": "dry_skin",
-                    "question": "Does the child have dry skin?",
+                    "name": "irritability",
+                    "question": "Is the child more irritable, apathetic, or withdrawn than usual?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "poor_appetite",
+                    "question": "Has the child shown a decreased appetite?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "frequent_infections",
+                    "question": "Does the child get frequent infections or take longer to recover?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "delayed_development",
+                    "question": "Has the child's physical or mental development been delayed?",
                     "weight": 0.9
                 },
                 {
-                    "name": "cold_hands_feet",
-                    "question": "Does the child have cold hands and feet?",
-                    "weight": 0.7
-                },
-                {
-                    "name": "swollen_tongue",
-                    "question": "Does the child have a swollen tongue?",
-                    "weight": 0.7
+                    "name": "muscle_wasting",
+                    "question": "Does the child appear to have lost muscle mass, especially in the arms and legs?",
+                    "weight": 0.8
                 }
             ],
-            "description": "A severe form of protein malnutrition characterized by edema, enlarged liver, and skin changes. It typically affects children during periods of famine or low protein intake.",
+            "description": "Kwashiorkor is a severe form of protein-energy malnutrition characterized by edema, skin changes, and hair changes. It typically occurs when a child's diet is severely deficient in protein but may have adequate calories.",
             "treatments": [
+                "Immediate medical attention and hospitalization if severe",
                 "Gradual reintroduction of protein-rich foods",
+                "Therapeutic milk formula (F-75, F-100)",
                 "Treatment of infections and complications",
                 "Vitamin and mineral supplementation",
-                "Therapeutic feeding program",
+                "Nutritional rehabilitation program",
                 "Regular medical monitoring",
-                "Nutritional counseling for caregivers"
+                "Family nutritional education and counseling"
             ],
             "severity": "severe",
-            "required_symptoms": ["enlarged_tummy", "brittle_hair"],
+            "required_symptoms": ["edema_swelling", "enlarged_abdomen"],
             "confidence_threshold": 0.8
         },
         "Marasmus": {
             "symptoms": [
                 {
-                    "name": "tiredness",
-                    "question": "Does the child show characteristics of tiredness?",
+                    "name": "severe_weight_loss",
+                    "question": "Has the child experienced severe weight loss or is significantly underweight for their age?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "muscle_wasting",
+                    "question": "Does the child appear to have severe muscle wasting, especially in the arms and legs?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "visible_ribs",
+                    "question": "Are the child's ribs, spine, and other bones clearly visible under the skin?",
                     "weight": 0.9
                 },
                 {
-                    "name": "enlarged_tummy",
-                    "question": "Does the child have an enlarged tummy?",
-                    "weight": 0.7
-                },
-                {
-                    "name": "brittle_hair",
-                    "question": "Does the child inhibit brittle hair?",
-                    "weight": 0.8
-                },
-                {
-                    "name": "diarrhoea",
-                    "question": "Does the child have symptoms of diarrhoea?",
+                    "name": "fatigue_weakness",
+                    "question": "Does the child appear extremely tired, weak, or lethargic?",
                     "weight": 0.9
                 },
                 {
                     "name": "dry_skin",
-                    "question": "Does the child have dry skin?",
-                    "weight": 1.0
+                    "question": "Does the child have very dry, wrinkled, or loose skin?",
+                    "weight": 0.8
                 },
                 {
-                    "name": "cold_hands_feet",
-                    "question": "Does the child have cold hands and feet?",
+                    "name": "brittle_hair",
+                    "question": "Is the child's hair thin, brittle, or easily falling out?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "frequent_infections",
+                    "question": "Does the child get frequent infections or take much longer to recover?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "delayed_development",
+                    "question": "Has the child's physical or mental development been significantly delayed?",
                     "weight": 0.9
                 },
                 {
-                    "name": "swollen_tongue",
-                    "question": "Does the child have a swollen tongue?",
+                    "name": "poor_appetite",
+                    "question": "Does the child show little interest in food or eating?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "diarrhea",
+                    "question": "Does the child frequently have diarrhea or loose stools?",
+                    "weight": 0.8
+                }
+            ],
+            "description": "Marasmus is a severe form of protein-energy malnutrition characterized by chronic wasting of body tissues. It results from a severe deficiency of both calories and protein, leading to extreme weight loss and muscle wasting.",
+            "treatments": [
+                "Immediate medical attention and hospitalization",
+                "Carefully planned refeeding program to prevent refeeding syndrome",
+                "Therapeutic milk formula (F-75, F-100) in controlled amounts",
+                "Treatment of underlying infections and complications",
+                "Gradual introduction of solid foods",
+                "Regular weight and growth monitoring",
+                "Vitamin and mineral supplementation",
+                "Family nutritional education and support"
+            ],
+            "severity": "severe",
+            "required_symptoms": ["severe_weight_loss", "muscle_wasting"],
+            "confidence_threshold": 0.8
+        },
+        "Vitamin A Deficiency": {
+            "symptoms": [
+                {
+                    "name": "night_blindness",
+                    "question": "Does the child have difficulty seeing in dim light or at night?",
+                    "weight": 1.0
+                },
+                {
+                    "name": "dry_eyes",
+                    "question": "Does the child have dry, irritated eyes or frequent eye infections?",
+                    "weight": 0.9
+                },
+                {
+                    "name": "frequent_infections",
+                    "question": "Does the child get frequent infections, especially respiratory infections?",
+                    "weight": 0.8
+                },
+                {
+                    "name": "poor_growth",
+                    "question": "Has the child's growth been slower than expected for their age?",
+                    "weight": 0.7
+                },
+                {
+                    "name": "skin_changes",
+                    "question": "Does the child have dry, rough skin or small bumps on the skin?",
+                    "weight": 0.6
+                },
+                {
+                    "name": "delayed_development",
+                    "question": "Has the child's development been delayed compared to peers?",
                     "weight": 0.7
                 }
             ],
-            "description": "A severe form of malnutrition characterized by chronic wasting of body tissues, resulting in severe weight loss and muscle wasting. Common in areas with food shortages or severe poverty.",
+            "description": "Vitamin A deficiency is a common micronutrient deficiency that can lead to night blindness, increased susceptibility to infections, and in severe cases, blindness. It's particularly common in areas with limited access to vitamin A-rich foods.",
             "treatments": [
-                "Carefully planned refeeding program",
-                "Treatment of underlying infections",
-                "Therapeutic milk formula",
-                "Gradual introduction of solid foods",
-                "Regular weight monitoring",
-                "Nutritional education for caregivers"
+                "Vitamin A supplementation (high-dose capsules)",
+                "Diet rich in vitamin A sources (orange vegetables, leafy greens, liver)",
+                "Treatment of any eye complications",
+                "Prevention of infections",
+                "Regular monitoring of vitamin A levels",
+                "Nutritional education for the family"
             ],
-            "severity": "severe",
-            "required_symptoms": ["dry_skin", "tiredness"],
-            "confidence_threshold": 0.8
+            "severity": "moderate",
+            "required_symptoms": ["night_blindness"],
+            "confidence_threshold": 0.7
         }
     },
     "system_settings": {
         "min_confidence_threshold": 0.6,
-        "required_symptoms_weight": 1.5,
-        "max_questions_per_session": 10,
+        "required_symptoms_weight": 2.0,
+        "max_questions_per_session": 15,
         "save_diagnosis_history": true,
-        "enable_detailed_reporting": true
+        "enable_detailed_reporting": true,
+        "enable_risk_assessment": true,
+        "enable_treatment_recommendations": true
     }
 } 
